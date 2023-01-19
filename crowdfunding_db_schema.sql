@@ -68,3 +68,18 @@ REFERENCES "subcategory" ("subcategory_id");
 
 ALTER TABLE "backers" ADD CONSTRAINT "fk_backers_cf_id" FOREIGN KEY("cf_id")
 REFERENCES "campaign" ("cf_id");
+
+SELECT backers_count 
+FROM campaign
+WHERE outcome = 'live'
+GROUP BY cf_id
+ORDER BY backers_count DESC;
+
+
+SELECT COUNT(backer_id)
+FROM backers
+GROUP BY cf_id
+ORDER BY COUNT(backer_id) DESC;
+
+
+
